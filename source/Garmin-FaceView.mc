@@ -1,6 +1,5 @@
 import Toybox.ActivityMonitor;
 import Toybox.Application;
-import Toybox.Application.Properties;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.SensorHistory;
@@ -55,8 +54,8 @@ class Garmin_FaceView extends WatchUi.WatchFace {
         dc.clear();
 
         // Read visual settings
-        var colorTheme = Properties.getValue("ColorTheme") as Number;
-        var squareStyle = Properties.getValue("SquareStyle") as Number;
+        var colorTheme = Application.getApp().getProperty("ColorTheme") as Number;
+        var squareStyle = Application.getApp().getProperty("SquareStyle") as Number;
 
         // Color themes: [spent, remaining]
         var spentColor = Graphics.COLOR_RED;
@@ -150,23 +149,23 @@ class Garmin_FaceView extends WatchUi.WatchFace {
         }
 
         // Low body battery warning bar at top
-        var lowBbThreshold = Properties.getValue("LowBbThreshold") as Number;
+        var lowBbThreshold = Application.getApp().getProperty("LowBbThreshold") as Number;
         if (lowBbThreshold > 0 && bbCurrent > 0 && bbCurrent <= lowBbThreshold) {
             dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);
             dc.fillRectangle(cx - 40, 8, 80, 4);
         }
 
         // Read text settings
-        var timeFormat = Properties.getValue("TimeFormat") as Number;
-        var showDate = Properties.getValue("ShowDate") as Boolean;
-        var dateFormat = Properties.getValue("DateFormat") as Number;
-        var showSeconds = Properties.getValue("ShowSeconds") as Boolean;
-        var fontSizeSetting = Properties.getValue("FontSize") as Number;
-        var textColor = Properties.getValue("TextColor") as Number;
-        var showBbValue = Properties.getValue("ShowBbValue") as Boolean;
-        var showSteps = Properties.getValue("ShowSteps") as Boolean;
-        var showHeartRate = Properties.getValue("ShowHeartRate") as Boolean;
-        var showDeviceBattery = Properties.getValue("ShowDeviceBattery") as Boolean;
+        var timeFormat = Application.getApp().getProperty("TimeFormat") as Number;
+        var showDate = Application.getApp().getProperty("ShowDate") as Boolean;
+        var dateFormat = Application.getApp().getProperty("DateFormat") as Number;
+        var showSeconds = Application.getApp().getProperty("ShowSeconds") as Boolean;
+        var fontSizeSetting = Application.getApp().getProperty("FontSize") as Number;
+        var textColor = Application.getApp().getProperty("TextColor") as Number;
+        var showBbValue = Application.getApp().getProperty("ShowBbValue") as Boolean;
+        var showSteps = Application.getApp().getProperty("ShowSteps") as Boolean;
+        var showHeartRate = Application.getApp().getProperty("ShowHeartRate") as Boolean;
+        var showDeviceBattery = Application.getApp().getProperty("ShowDeviceBattery") as Boolean;
 
         // Dim text in sleep mode
         if (_sleeping) {
