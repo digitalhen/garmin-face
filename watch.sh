@@ -1,7 +1,9 @@
 #!/bin/bash
-SDK="/Users/henry/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-8.4.1-2026-02-03-e9f77eeaa/bin"
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+export PATH="$JAVA_HOME/bin:$PATH"
+SDK="/Users/henry/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.1.0-2026-03-09-6a872a80b/bin"
 PROJECT="/Users/henry/Code/garmin-face"
-KEY="/Users/henry/.garmin/developer_key.der"
+KEY="/Users/henry/.garmin/developer_key"
 DEVICE="enduro3"
 
 build() {

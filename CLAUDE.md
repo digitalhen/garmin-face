@@ -20,7 +20,7 @@ watch.sh                      # Dev build-watch script (fswatch + auto-deploy)
 ## Tech Stack
 
 - **Language:** Monkey C (Garmin Connect IQ)
-- **SDK:** Connect IQ SDK 8.4.1
+- **SDK:** Connect IQ SDK 9.1.0
 - **Target Devices:** Circular Garmin watches (Enduro 3, Fenix 7/8, Forerunner 265/965, Epix 2, Venu 3)
 - **Min API:** 5.2.0
 - **App Type:** watchface
@@ -51,7 +51,7 @@ To add a new circular device, add a `<iq:product id="devicename"/>` entry to the
 
 ## Build & Development
 
-**Prerequisites:** Garmin Connect IQ SDK, Java runtime, `fswatch` (for watch mode), developer key at `~/.garmin/developer_key.der`
+**Prerequisites:** Garmin Connect IQ SDK, Java runtime, `fswatch` (for watch mode), developer key at `~/.garmin/developer_key` (symlinked to iCloud Drive at `~/Library/Mobile Documents/com~apple~CloudDocs/Code/garmin-keys/developer_key`)
 
 **Watch mode (auto-rebuild + simulator deploy):**
 ```bash
@@ -61,12 +61,12 @@ Edit `DEVICE` in `watch.sh` to test different devices (default: `enduro3`).
 
 **Manual build:**
 ```bash
-SDK="/Users/henry/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-8.4.1-2026-02-03-e9f77eeaa/bin"
+SDK="/Users/henry/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.1.0-2026-03-09-6a872a80b/bin"
 java -Xms1g -Dfile.encoding=UTF-8 -Dapple.awt.UIElement=true \
     -jar "$SDK/monkeybrains.jar" \
     -o GarminFace.prg \
     -f monkey.jungle \
-    -y ~/.garmin/developer_key.der \
+    -y ~/.garmin/developer_key \
     -d enduro3 -w
 ```
 Replace `-d enduro3` with any supported device ID (e.g., `-d fenix7`).
